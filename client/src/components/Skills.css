@@ -1,0 +1,100 @@
+.skills-section {
+  padding: 80px 8%;
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+}
+
+.skills-container {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 50px;
+  width: 100%;
+}
+
+.skills-title {
+  font-size: 3rem;
+  color: #fff;
+  font-weight: 800;
+  margin-bottom: 30px;
+}
+
+/* Slightly Darker Cards for Consistency */
+.tech-glass-card {
+  background: rgba(4, 12, 30, 0.6); /* Adjusted to match your dark theme */
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 12px 18px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: 0.3s ease;
+}
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 15px;
+  margin-bottom: 30px; /* Space before exploring badge */
+}
+
+.tech-icon { font-size: 1.6rem; display: flex; }
+.tech-name { color: #fff; font-weight: 600; font-size: 0.95rem; }
+
+/* Exploring Badge at Bottom */
+.exploring-badge-bottom {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(45, 212, 191, 0.05);
+  color: #2dd4bf;
+  padding: 10px 20px;
+  border-radius: 6px;
+  border: 1px solid rgba(45, 212, 191, 0.2);
+  font-size: 1rem;
+}
+
+.static-dot {
+  width: 8px; height: 8px; background: #2dd4bf; border-radius: 50%;
+}
+
+/* Terminal Glass Styling */
+.terminal-glass {
+  background: rgba(2, 8, 20, 0.7); /* Consistent dark shade */
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  height: 280px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+}
+
+.terminal-header {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 12px 15px;
+  display: flex;
+  gap: 8px;
+}
+
+.t-dot { width: 10px; height: 10px; border-radius: 50%; }
+.red { background: #ff5f56; }
+.yellow { background: #ffbd2e; }
+.green { background: #27c93f; }
+
+.terminal-content {
+  padding: 25px;
+  font-family: 'Fira Code', monospace;
+  color: #2dd4bf;
+}
+
+.cmd span { color: #fff; margin-right: 10px; }
+.typing-text { color: #888; margin-top: 15px; font-size: 0.9rem; line-height: 1.6; }
+.cursor { animation: blink 1s infinite; }
+
+@keyframes blink { 50% { opacity: 0; } }
+
+@media (max-width: 968px) {
+  .skills-container { grid-template-columns: 1fr; }
+  .skills-right { display: none; }
+}

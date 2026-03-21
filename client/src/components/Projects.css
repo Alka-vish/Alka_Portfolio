@@ -1,0 +1,201 @@
+.minimal-projects {
+  padding: 80px 10%;
+}
+
+.section-title-clean {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 50px;
+}
+
+.compact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 25px;
+}
+
+/* Minimal Card Design - EXACT DARK MATCH */
+.compact-card {
+  /* Dark solid color with very low transparency to match About section */
+  background: rgba(10, 15, 30, 0.7); 
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  
+  /* Border is very subtle, just like your other cards */
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 24px;
+  padding: 30px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.compact-card:hover {
+  /* Only slightly lighter so it stays dark even on hover */
+  background: rgba(15, 23, 42, 0.8);
+  border-color: #2dd4bf;
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.project-icon-box {
+  /* Matches the background of the main card but slightly lighter */
+  background: rgba(255, 255, 255, 0.03);
+  padding: 10px;
+  border-radius: 12px;
+  font-size: 2.2rem;
+  color: #2dd4bf;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-category-small {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba(255, 255, 255, 0.4);
+  font-weight: 700;
+}
+
+.project-name-clean {
+  color: #ffffff;
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.project-brief {
+  /* Dull grey text for better readability against dark background */
+  color: #94a3b8; 
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.view-details-btn {
+  background: transparent;
+  border: none;
+  color: #2dd4bf;
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  cursor: pointer;
+}
+
+/* Modal Styling - SOLID DARK */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modal-content {
+  /* Darkest background to keep focus on text and images */
+  background: #020617; 
+  width: 100%;
+  max-width: 900px;
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.9);
+}
+
+@keyframes modalScale {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.close-modal {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(255,255,255,0.05);
+  border: none;
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.modal-image-pane img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modal-text-pane {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-tag { color: #2dd4bf; font-weight: 700; font-size: 0.8rem; letter-spacing: 2px; }
+.modal-title { font-size: 2.2rem; margin: 10px 0; color: #fff; }
+
+.modal-tech-row {
+  display: flex;
+  gap: 15px;
+  font-size: 1.5rem;
+  color: #2dd4bf;
+  margin-bottom: 20px;
+}
+
+.modal-description {
+  color: #cbd5e1;
+  line-height: 1.7;
+  margin-bottom: 30px;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: auto;
+}
+
+.modal-btn {
+  padding: 12px 24px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: 0.3s;
+}
+
+.modal-btn.git { background: rgba(255,255,255,0.05); color: #fff; border: 1px solid rgba(255,255,255,0.1); }
+.modal-btn.live { background: #2dd4bf; color: #020617; }
+
+@media (max-width: 800px) {
+  .modal-body { grid-template-columns: 1fr; }
+  .modal-image-pane { height: 250px; }
+}

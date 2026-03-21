@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  --color-main: #ffffff;      /* Pure White Shimmer */
+  --color-accent: #2dd4bf;    /* Teal/Cyan Accent */
+  
+  /* Image Extracted Blue Palette */
+  --color-bg-dark: #000613;   /* Left dark side */
+  --color-bg-mid: #05258f;    /* Center blue */
+  --color-bg-light: #063075;  /* Right highlight */
+  
+  --font-display: 'Plus Jakarta Sans', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--color-main);
+  /* Linear gradient exactly like your image */
+  background: linear-gradient(135deg, #020b1d 0%, #042d7a 45%, #1663e5 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--color-bg-dark); }
+::-webkit-scrollbar-thumb { background: var(--color-bg-mid); border-radius: 10px; }
