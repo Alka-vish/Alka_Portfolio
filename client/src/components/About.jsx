@@ -1,12 +1,16 @@
-import React from 'react';
-import { FaGraduationCap, FaUserTie, FaStar, FaUserAstronaut } from 'react-icons/fa';
-import './About.css';
+import React from "react";
+import {
+  FaGraduationCap,
+  FaUserTie,
+  FaStar,
+  FaUserAstronaut,
+} from "react-icons/fa";
+import "./About.css";
 
 const About = () => {
   return (
     <section id="about" className="about-section">
       <div className="about-container">
-        
         {/* Left Column: About + Roles */}
         <div className="about-left">
           <div className="glass-card about-card">
@@ -14,10 +18,13 @@ const About = () => {
               <FaUserAstronaut className="accent-icon" />
               <h3>About Me</h3>
             </div>
-            <p>
-              3rd-year Engineering student at <strong>VESIT</strong>, specializing in AI & Data Science. 
-              I build products that solve real-world problems, from secure cloud storage to 
-              real-time sign language detection.
+            <p className="justified-text">
+              I am a <strong>3rd-year AI & Data Science student</strong> at <strong>VESIT, Mumbai</strong>. 
+              Currently, I am focused on mastering <strong>Full-Stack development</strong> by building 
+              real-world projects. Along with web tech, I have a solid grip on <strong>Data Science tools </strong>  
+               like <strong>NumPy and Pandas</strong>. I am also a consistent <strong>problem solver</strong>, 
+              solving <strong>DSA problems daily</strong> to sharpen my logic and preparation for 
+              upcoming placements.
             </p>
           </div>
 
@@ -44,49 +51,51 @@ const About = () => {
         <div className="about-right">
           <div className="glass-card edu-card">
             <h4 className="column-label">Academic Background</h4>
-            
+
+            {/* B.Tech */}
             <div className="edu-item">
               <div className="edu-title">
                 <FaGraduationCap className="white-icon" />
                 <h5>B.Tech in AI & Data Science</h5>
               </div>
-              <p>VESIT, Mumbai University</p>
+              <p className="college-name">VESIT, Mumbai</p>
               <div className="edu-meta">
+                <span className="badge">CGPA: 9.35 (5th sem)</span>
                 <span className="date-text">2023 - 2027</span>
-                <span className="badge">9.1 CGPA</span>
               </div>
             </div>
 
             <div className="divider"></div>
 
+            {/* HSC */}
             <div className="edu-item">
               <div className="edu-title">
                 <div className="mini-icon">HSC</div>
                 <h5>Higher Secondary Certificate</h5>
               </div>
-              <p>Your Junior College Name</p>
+              <p className="college-name">Vani Vidyalaya Jr. College, Mulund</p>
               <div className="edu-meta">
+                <span className="badge">Percentage: 83.83%</span>
                 <span className="date-text">2021 - 2023</span>
-                <span className="badge">85%</span>
               </div>
             </div>
 
             <div className="divider"></div>
 
+            {/* SSC */}
             <div className="edu-item">
               <div className="edu-title">
                 <div className="mini-icon">SSC</div>
                 <h5>Secondary School Certificate</h5>
               </div>
-              <p>Your School Name</p>
+              <p className="college-name">Gyanodaya Vidya Mandir, Thane (W)</p>
               <div className="edu-meta">
+                <span className="badge">Percentage: 96.60%</span>
                 <span className="date-text">2020 - 2021</span>
-                <span className="badge">92%</span>
               </div>
             </div>
           </div>
         </div>
-
       </div>
     </section>
   );

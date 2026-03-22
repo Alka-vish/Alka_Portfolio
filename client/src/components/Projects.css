@@ -1,3 +1,4 @@
+/* --- Sections and Grid --- */
 .minimal-projects {
   padding: 80px 10%;
 }
@@ -15,14 +16,11 @@
   gap: 25px;
 }
 
-/* Minimal Card Design - EXACT DARK MATCH */
+/* --- Project Cards (Grid View) --- */
 .compact-card {
-  /* Dark solid color with very low transparency to match About section */
   background: rgba(10, 15, 30, 0.7); 
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  
-  /* Border is very subtle, just like your other cards */
   border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 24px;
   padding: 30px;
@@ -33,11 +31,9 @@
 }
 
 .compact-card:hover {
-  /* Only slightly lighter so it stays dark even on hover */
   background: rgba(15, 23, 42, 0.8);
   border-color: #2dd4bf;
   transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
 }
 
 .card-top {
@@ -48,7 +44,6 @@
 }
 
 .project-icon-box {
-  /* Matches the background of the main card but slightly lighter */
   background: rgba(255, 255, 255, 0.03);
   padding: 10px;
   border-radius: 12px;
@@ -75,7 +70,6 @@
 }
 
 .project-brief {
-  /* Dull grey text for better readability against dark background */
   color: #94a3b8; 
   font-size: 0.95rem;
   line-height: 1.6;
@@ -92,100 +86,129 @@
   gap: 8px;
   padding: 0;
   cursor: pointer;
+  margin-top: 15px;
 }
 
-/* Modal Styling - SOLID DARK */
+/* --- Modal Overlay (The Fixed Part) --- */
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(2, 6, 23, 0.95);
-  backdrop-filter: blur(10px);
-  z-index: 999;
+  background: rgba(2, 6, 23, 0.96); /* Darker backdrop */
+  backdrop-filter: blur(12px);
+  z-index: 9999; /* Ensure this is higher than your navbar's z-index */
   display: flex;
-  align-items: center;
+  align-items: flex-start; /* Start from top to prevent navbar overlap */
   justify-content: center;
-  padding: 20px;
+  padding: 100px 20px 40px 20px; /* 100px top padding keeps it below navbar */
+  overflow-y: auto; /* Allow full page scroll for big images */
 }
 
 .modal-content {
-  /* Darkest background to keep focus on text and images */
   background: #020617; 
   width: 100%;
   max-width: 900px;
   border-radius: 28px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   position: relative;
-  overflow: hidden;
+  overflow: hidden; 
   box-shadow: 0 0 60px rgba(0, 0, 0, 0.9);
+  animation: modalScale 0.3s ease-out;
 }
 
 @keyframes modalScale {
-  from { transform: scale(0.9); opacity: 0; }
+  from { transform: scale(0.95); opacity: 0; }
   to { transform: scale(1); opacity: 1; }
 }
 
+/* --- Close Button --- */
 .close-modal {
   position: absolute;
   top: 20px;
   right: 20px;
-  background: rgba(255,255,255,0.05);
-  border: none;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   color: #fff;
   width: 40px;
   height: 40px;
   border-radius: 50%;
   cursor: pointer;
-  z-index: 10;
+  z-index: 10001; /* Higher than image */
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: 0.3s;
 }
 
-.modal-body {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+.close-modal:hover {
+  background: #ef4444; /* Red on hover for clarity */
+  transform: rotate(90deg);
 }
 
-.modal-image-pane img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.modal-text-pane {
-  padding: 40px;
+/* --- Image and Content Alignment --- */
+.modal-body-vertical {
   display: flex;
   flex-direction: column;
 }
 
+.modal-image-full {
+  width: 100%;
+  background: #f8fafc; /* Professional contrast */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 2px solid rgba(45, 212, 191, 0.2);
+}
+
+.modal-image-full img {
+  width: 100%;
+  height: auto;
+  max-height: 500px;
+  object-fit: contain;
+  display: block;
+}
+
+.modal-content-centered {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
 .modal-tag { color: #2dd4bf; font-weight: 700; font-size: 0.8rem; letter-spacing: 2px; }
-.modal-title { font-size: 2.2rem; margin: 10px 0; color: #fff; }
+.modal-title { font-size: 2.2rem; margin: 15px 0; color: #fff; font-weight: 800; }
 
 .modal-tech-row {
   display: flex;
-  gap: 15px;
-  font-size: 1.5rem;
+  justify-content: center;
+  gap: 20px;
+  font-size: 1.8rem;
   color: #2dd4bf;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
-.modal-description {
+.modal-description-justify {
   color: #cbd5e1;
-  line-height: 1.7;
-  margin-bottom: 30px;
+  line-height: 1.8;
+  font-size: 1.05rem;
+  text-align: justify;
+  text-justify: inter-word;
+  max-width: 750px;
+  margin-bottom: 35px;
 }
 
-.modal-actions {
+.modal-actions-centered {
   display: flex;
-  gap: 15px;
-  margin-top: auto;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
 }
 
 .modal-btn {
-  padding: 12px 24px;
-  border-radius: 10px;
+  padding: 12px 28px;
+  border-radius: 12px;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 700;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -195,7 +218,15 @@
 .modal-btn.git { background: rgba(255,255,255,0.05); color: #fff; border: 1px solid rgba(255,255,255,0.1); }
 .modal-btn.live { background: #2dd4bf; color: #020617; }
 
-@media (max-width: 800px) {
-  .modal-body { grid-template-columns: 1fr; }
-  .modal-image-pane { height: 250px; }
+.modal-btn:hover { transform: translateY(-3px); }
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .modal-overlay { padding-top: 80px; }
+  .modal-title { font-size: 1.6rem; }
+  .modal-actions-centered { flex-direction: column; }
 }
+
+/* Scrollbar Fix */
+.modal-content::-webkit-scrollbar { width: 5px; }
+.modal-content::-webkit-scrollbar-thumb { background: rgba(45, 212, 191, 0.2); border-radius: 10px; }

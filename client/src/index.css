@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;500;600&display=swap');
+@import "tailwindcss";
 
 :root {
-  --color-main: #ffffff;      /* Pure White Shimmer */
-  --color-accent: #2dd4bf;    /* Teal/Cyan Accent */
-  
-  /* Image Extracted Blue Palette */
-  --color-bg-dark: #000613;   /* Left dark side */
-  --color-bg-mid: #05258f;    /* Center blue */
-  --color-bg-light: #063075;  /* Right highlight */
-  
+  --color-main: #e6edf3;         
+  --color-accent: #2dd4bf;       /* ✅ YOUR TEAL COLOR */
+
+  --color-bg-dark: #020617;
+  --color-bg-mid: #0f172a;
+  --color-bg-light: #1e293b;
+
   --font-display: 'Plus Jakarta Sans', sans-serif;
   --font-body: 'Inter', sans-serif;
 }
@@ -19,20 +19,85 @@
   box-sizing: border-box;
 }
 
-body {
-  margin: 0;
-  font-family: var(--font-body);
-  color: var(--color-main);
-  /* Linear gradient exactly like your image */
-  background: linear-gradient(135deg, #020b1d 0%, #042d7a 45%, #1663e5 100%);
-  background-attachment: fixed;
-  min-height: 100vh;
-  overflow-x: hidden;
-}
 html {
   scroll-behavior: smooth;
 }
 
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: var(--color-bg-dark); }
-::-webkit-scrollbar-thumb { background: var(--color-bg-mid); border-radius: 10px; }
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--color-main);
+
+  /* Teal-based subtle tech background */
+  background: radial-gradient(circle at 20% 30%, rgba(45,212,191,0.12), transparent 40%),
+              radial-gradient(circle at 80% 70%, rgba(45,212,191,0.08), transparent 40%),
+              linear-gradient(135deg, #020617 0%, #020617 40%, #0f172a 100%);
+
+  background-attachment: fixed;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Tech grid overlay */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+
+  background-image: 
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg-dark);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-bg-mid);
+  border-radius: 10px;
+}
+
+/* Layout */
+.app-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 5%;
+}
+
+section {
+  padding: 120px 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Title */
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 800;
+  color: #ffffff;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+  margin-bottom: 2rem;
+}
+
+/* Buttons (teal glow now) */
+button {
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(45,212,191,0.35); /* ✅ teal glow */
+}

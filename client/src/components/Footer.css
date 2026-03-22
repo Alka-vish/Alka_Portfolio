@@ -1,0 +1,28 @@
+.footer {
+  padding: 40px 10%;
+  text-align: center;
+  background: transparent;
+}
+
+.footer-line {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(90deg, transparent, rgba(45, 212, 191, 0.3), transparent);
+  margin-bottom: 30px;
+}
+
+.footer-content p {
+  color: #94a3b8;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+
+.footer-bottom-text {
+  color: #2dd4bf;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-top: 10px;
+  letter-spacing: 2px;
+  opacity: 0.8;
+}

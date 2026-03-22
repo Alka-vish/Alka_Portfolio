@@ -1,0 +1,105 @@
+.cert-section {
+  padding: 80px 10%;
+}
+
+.cert-grid {
+  display: grid;
+  /* Balanced grid for the certificates */
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.cert-card {
+  background: rgba(15, 23, 42, 0.5);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 25px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  transition: all 0.4s ease;
+}
+
+.cert-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--brand-glow);
+  box-shadow: 0 10px 30px -15px var(--brand-glow);
+}
+
+.cert-logo-box {
+  /* Box size increased so image isn't tiny */
+  width: 85px; 
+  height: 85px;
+  background: #fff; 
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Removed padding so image touches the edges */
+  padding: 0; 
+  flex-shrink: 0;
+  overflow: hidden; /* Keeps image inside the border radius */
+}
+
+.cert-logo-img {
+  width: 100%;
+  height: 100%;
+  /* 'cover' fills the box, 'fill' stretches it to every corner */
+  object-fit: cover; 
+  display: block;
+}
+
+.cert-info {
+  text-align: left;
+}
+
+.cert-header-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cert-company {
+  color: #94a3b8;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.silver-badge {
+  background: #cbd5e1;
+  color: #0f172a;
+  font-size: 0.6rem;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+.cert-name {
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 5px 0;
+}
+
+.cert-date {
+  color: #64748b;
+  font-size: 0.85rem;
+  margin-bottom: 10px;
+}
+
+.view-cert-link {
+  color: #2dd4bf;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.view-cert-link:hover {
+  text-decoration: underline;
+}

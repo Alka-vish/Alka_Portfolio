@@ -1,93 +1,95 @@
 .contact-section {
-  padding: 100px 10%;
-  text-align: center;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.contact-subtitle {
-  color: #94a3b8;
-  margin-top: -30px;
-  margin-bottom: 50px;
-  font-size: 1.1rem;
-}
-
-.social-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 25px;
-}
-
-/* Dark Solid Card - Matches About Section */
-.social-handle-card {
-  background: rgba(10, 15, 30, 0.7); 
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 24px;
-  padding: 40px 20px;
-  text-decoration: none;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
-  overflow: hidden;
+  text-align: center;
+  padding: 100px 10%;
+  background: transparent;
 }
 
-/* Crazy Interactive Hover */
-.social-handle-card:hover {
-  transform: translateY(-12px) scale(1.05);
-  background: rgba(15, 23, 42, 0.9);
-  border-color: #2dd4bf;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(45, 212, 191, 0.2);
-}
-
-.social-icon {
-  font-size: 3.5rem;
-  color: #64748b; /* Dull starting color */
-  margin-bottom: 20px;
-  transition: all 0.5s ease;
-}
-
-.social-handle-card:hover .social-icon {
-  color: #2dd4bf; /* Neon Cyan */
-  transform: rotate(360deg);
-  filter: drop-shadow(0 0 10px rgba(45, 212, 191, 0.5));
-}
-
-.handle-name {
-  color: #fff;
-  font-size: 1.4rem;
+/* --- Improved Visibility for Titles --- */
+.section-title-large {
+  font-size: 4rem; /* Size increased for visibility */
   font-weight: 800;
+  color: #ffffff;
   margin-bottom: 5px;
+  letter-spacing: -1px;
 }
 
-.handle-text {
-  color: #2dd4bf;
-  font-size: 0.9rem;
+.grow-tagline {
+  font-size: 1.2rem;
+  color: #2dd4bf; /* Teal color to match your theme */
   font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
   margin-bottom: 15px;
-  opacity: 0.7;
 }
 
-.handle-vibe {
-  color: #64748b; /* Dull grey text */
-  font-size: 0.85rem;
-  font-style: italic;
+.contact-tagline {
+  color: #94a3b8;
+  font-size: 1rem;
+  margin-bottom: 40px;
 }
 
-/* Floating Animation to make the section feel alive */
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+/* --- Icon Grid --- */
+.icon-constellation {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  width: 100%;
 }
 
-.social-handle-card {
-  animation: float 5s ease-in-out infinite;
+.social-orb {
+  position: relative;
+  width: 70px;
+  height: 70px;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  text-decoration: none;
 }
 
-.social-handle-card:nth-child(even) {
-  animation-delay: 1s;
+.orb-icon {
+  font-size: 1.8rem;
+  color: #94a3b8;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+/* --- Hover Effects --- */
+.social-orb:hover {
+  transform: translateY(-12px);
+  border-color: var(--brand-color);
+  background: rgba(15, 23, 42, 0.8);
+  box-shadow: 0 10px 30px -10px var(--brand-color);
+}
+
+.social-orb:hover .orb-icon {
+  color: #ffffff;
+  filter: drop-shadow(0 0 10px var(--brand-color));
+}
+
+.collab-text {
+  color: #94a3b8;
+  font-size: 1.1rem;
+  font-weight: 400;
+  max-width: 500px;
+  margin: 0 auto 40px auto;
+  line-height: 1.5;
+  /* border-left: 2px solid #2dd4bf;  */
+  padding-left: 15px;
+}
+
+/* Responsive fix */
+@media (max-width: 768px) {
+  .section-title-large { font-size: 2.8rem; }
+  .social-orb { width: 60px; height: 60px; }
+  .orb-icon { font-size: 1.5rem; }
 }

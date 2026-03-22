@@ -1,61 +1,55 @@
 import React from 'react';
 import './Contact.css';
-import { FaLinkedin, FaGithub, FaYoutube, FaEnvelope } from 'react-icons/fa';
+import { FaLinkedinIn, FaGithub, FaEnvelope, FaWhatsapp, FaInstagram, FaTwitter } from 'react-icons/fa';
+import { SiLeetcode } from 'react-icons/si';
 
 const Contact = () => {
-  const socials = [
-    {
-      id: 1,
-      name: "LinkedIn",
-      handle: "Alka Vishwakarma",
-      icon: <FaLinkedin />,
-      link: "https://linkedin.com/in/alkavishwakarma",
-      vibe: "The Professional Side"
+  const socialLinks = [
+    { id: 1, icon: <FaLinkedinIn />, link: "https://www.linkedin.com/in/alka-vishwakarma/", label: "LinkedIn", color: "#0077b5" },
+    { id: 2, icon: <FaGithub />, link: "https://github.com/Alka-vish", label: "GitHub", color: "#ffffff" },
+    { 
+      id: 3, 
+      icon: <FaEnvelope />, 
+      // Direct Gmail compose link for better experience
+      link: "https://mail.google.com/mail/?view=cm&fs=1&to=alkawinner100@gmail.com&su=Project%20Inquiry&body=Hi%20Alka,", 
+      label: "Email", 
+      color: "#ea4335" 
     },
-    {
-      id: 2,
-      name: "GitHub",
-      handle: "@alkavishwakarma",
-      icon: <FaGithub />,
-      link: "https://github.com/alkavishwakarma",
-      vibe: "Where Code Lives"
+    { 
+      id: 4, 
+      icon: <FaWhatsapp />, 
+      // WhatsApp API with automated message
+      link: "https://api.whatsapp.com/send?phone=917977277429&text=Hi%20Alka,%20I%20saw%20your%20portfolio%20and%20wanted%20to%20connect!", 
+      label: "WhatsApp", 
+      color: "#25d366" 
     },
-    {
-      id: 3,
-      name: "Email",
-      handle: "alkavishwakarma@email.com",
-      icon: <FaEnvelope />,
-      link: "mailto:alkavishwakarma@email.com",
-      vibe: "Let's Build Something"
-    },
-    {
-      id: 4,
-      name: "YouTube",
-      handle: "Coming Soon!",
-      icon: <FaYoutube />,
-      link: "#",
-      vibe: "Vlogs & Tutorials"
-    }
-  ];
+    { id: 5, icon: <SiLeetcode />, link: "https://leetcode.com/u/Alka_v/", label: "LeetCode", color: "#ffa116" },
+    { id: 6, icon: <FaInstagram />, link: "https://www.instagram.com/alkav243/", label: "Instagram", color: "#e1306c" },
+    { id: 7, icon: <FaTwitter />, link: "https://x.com/alka_unofficial", label: "Twitter", color: "#1da1f2" },
+];
 
   return (
-    <section className="contact-section" id="contact">
-      <h2 className="section-title-clean">Get In Touch</h2>
-      <p className="contact-subtitle">Let's collab on some crazy Agentic AI projects! 🚀</p>
-      
-      <div className="social-grid">
-        {socials.map((social) => (
+    <section id="contact" className="contact-section">
+      <div className="contact-header">
+        {/* Visibility fixed for this heading */}
+        <h2 className="section-title-large">Let's Connect</h2>
+        <p className="grow-tagline">Let's grow together</p>
+        <p className="collab-text">Open for collaborations and interesting projects.</p>
+      </div>
+
+      <div className="icon-constellation">
+        {socialLinks.map((social) => (
           <a 
-            key={social.id} 
-            href={social.link} 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className="social-handle-card"
+            key={social.id}
+            href={social.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="social-orb"
+            style={{ "--brand-color": social.color }}
+            data-label={social.label}
           >
-            <div className="social-icon">{social.icon}</div>
-            <h3 className="handle-name">{social.name}</h3>
-            <span className="handle-text">{social.handle}</span>
-            <p className="handle-vibe">{social.vibe}</p>
+            <span className="orb-icon">{social.icon}</span>
+            <div className="orb-glow"></div>
           </a>
         ))}
       </div>
