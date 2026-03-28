@@ -1,53 +1,122 @@
+/* --- Sections and Grid (Responsive) --- */
+
 .cert-section {
   padding: 80px 10%;
 }
 
 .cert-grid {
   display: grid;
-  /* Balanced grid for the certificates */
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+
+  /* repeat(auto-fit) ensures cards don't break on mid-screens */
+
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+
   gap: 20px;
+
   margin-top: 40px;
 }
 
+/* --- Certificate Cards (Fixed & Flash Added) --- */
+
 .cert-card {
   background: rgba(15, 23, 42, 0.5);
+
   backdrop-filter: blur(12px);
+
+  -webkit-backdrop-filter: blur(12px);
+
   border: 1px solid rgba(255, 255, 255, 0.05);
+
   border-radius: 20px;
+
   padding: 25px;
+
   display: flex;
+
   gap: 20px;
+
   align-items: center;
+
   transition: all 0.4s ease;
+
+  position: relative;
+
+  overflow: hidden; /* Flash containment */
+}
+
+/* DYNAMIC FLASH EFFECT: Card ke highlight color ke hisaab se */
+
+.cert-card::after {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+
+  left: -150%;
+
+  width: 50%;
+
+  height: 100%;
+
+  /* Yaha var(--brand-glow) use kiya hai taaki color match kare */
+
+  background: linear-gradient(
+    to right,
+
+    transparent,
+    var(--brand-glow, rgba(255, 255, 255, 0.1)),
+    transparent
+  );
+
+  transform: skewX(-25deg);
+
+  transition: 0.7s;
+
+  opacity: 0.3; /* Subtle glow */
 }
 
 .cert-card:hover {
   transform: translateY(-8px);
+
   border-color: var(--brand-glow);
+
   box-shadow: 0 10px 30px -15px var(--brand-glow);
 }
 
+.cert-card:hover::after {
+  left: 150%;
+}
+
 .cert-logo-box {
-  /* Box size increased so image isn't tiny */
-  width: 85px; 
+  width: 85px;
+
   height: 85px;
-  background: #fff; 
+
+  background: #fff;
+
   border-radius: 12px;
+
   display: flex;
+
   align-items: center;
+
   justify-content: center;
-  /* Removed padding so image touches the edges */
-  padding: 0; 
+
+  padding: 0;
+
   flex-shrink: 0;
-  overflow: hidden; /* Keeps image inside the border radius */
+
+  overflow: hidden;
 }
 
 .cert-logo-img {
   width: 100%;
+
   height: 100%;
-  /* 'cover' fills the box, 'fill' stretches it to every corner */
-  object-fit: cover; 
+
+  object-fit: cover;
+
   display: block;
 }
 
@@ -57,49 +126,102 @@
 
 .cert-header-row {
   display: flex;
+
   align-items: center;
+
   gap: 10px;
+
+  flex-wrap: wrap; /* To prevent overlap on very small screens */
 }
 
 .cert-company {
   color: #94a3b8;
+
   font-size: 0.75rem;
+
   font-weight: 700;
+
   text-transform: uppercase;
 }
 
 .silver-badge {
   background: #cbd5e1;
+
   color: #0f172a;
+
   font-size: 0.6rem;
+
   font-weight: 800;
+
   padding: 2px 8px;
+
   border-radius: 10px;
 }
 
 .cert-name {
   color: #ffffff;
+
   font-size: 1.1rem;
+
   font-weight: 700;
+
   margin: 5px 0;
 }
 
 .cert-date {
   color: #64748b;
+
   font-size: 0.85rem;
+
   margin-bottom: 10px;
 }
 
 .view-cert-link {
   color: #2dd4bf;
+
   text-decoration: none;
+
   font-size: 0.85rem;
+
   font-weight: 600;
+
   display: flex;
+
   align-items: center;
+
   gap: 8px;
 }
 
 .view-cert-link:hover {
   text-decoration: underline;
+}
+
+/* --- MOBILE RESPONSIVE FIXES --- */
+
+@media (max-width: 1024px) {
+  .cert-section {
+    padding: 60px 5%;
+  }
+}
+
+@media (max-width: 480px) {
+  .cert-card {
+    flex-direction: column; /* Stack logo and text on small phones */
+
+    align-items: flex-start;
+
+    padding: 20px;
+  }
+
+  .cert-logo-box {
+    width: 60px;
+
+    height: 60px;
+
+    margin-bottom: 10px;
+  }
+
+  .cert-name {
+    font-size: 1rem;
+  }
 }

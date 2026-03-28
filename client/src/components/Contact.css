@@ -7,31 +7,57 @@
   background: transparent;
 }
 
-/* --- Improved Visibility for Titles --- */
+/* --- TERA ORIGINAL HEADER STRUCTURE --- */
+.contact-header {
+  margin-bottom: 40px; /* Original spacing */
+}
+
 .section-title-large {
-  font-size: 4rem; /* Size increased for visibility */
+  font-size: 4rem; 
   font-weight: 800;
   color: #ffffff;
   margin-bottom: 5px;
   letter-spacing: -1px;
+
+  /* SHIMMER EFFECT ADDED */
+  color: rgba(255, 255, 255, 0.2);
+  background: linear-gradient(
+    to right, 
+    #ffffff 20%, 
+    #2dd4bf 40%, 
+    #2dd4bf 60%, 
+    #ffffff 80%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s linear infinite;
+}
+
+@keyframes shimmer {
+  to { background-position: 200% center; }
 }
 
 .grow-tagline {
   font-size: 1.2rem;
-  color: #2dd4bf; /* Teal color to match your theme */
+  color: #2dd4bf; 
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 2px;
-  margin-bottom: 15px;
+  margin-bottom: 15px; /* Original spacing */
 }
 
-.contact-tagline {
+.collab-text {
   color: #94a3b8;
-  font-size: 1rem;
-  margin-bottom: 40px;
+  font-size: 1.1rem;
+  font-weight: 400;
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.5;
+  padding-left: 15px;
 }
 
-/* --- Icon Grid --- */
+/* --- ICON GRID & FLASH --- */
 .icon-constellation {
   display: flex;
   flex-direction: row;
@@ -39,6 +65,7 @@
   justify-content: center;
   gap: 25px;
   width: 100%;
+  margin-top: 40px;
 }
 
 .social-orb {
@@ -54,6 +81,17 @@
   align-items: center;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   text-decoration: none;
+
+  /* CONTINUOUS BRAND COLOR FLASH */
+  animation: brandFlash 3s infinite ease-in-out;
+}
+
+@keyframes brandFlash {
+  0%, 100% { border-color: rgba(255, 255, 255, 0.1); box-shadow: 0 0 0px transparent; }
+  50% { 
+    border-color: var(--brand-color); 
+    box-shadow: 0 0 15px -5px var(--brand-color); 
+  }
 }
 
 .orb-icon {
@@ -61,35 +99,40 @@
   color: #94a3b8;
   z-index: 2;
   transition: all 0.3s ease;
+  /* Icon also color-flashes */
+  animation: iconColorChange 3s infinite ease-in-out;
 }
 
-/* --- Hover Effects --- */
+@keyframes iconColorChange {
+  0%, 100% { color: #94a3b8; }
+  50% { color: var(--brand-color); }
+}
+
+/* --- HOVER EFFECTS --- */
 .social-orb:hover {
   transform: translateY(-12px);
   border-color: var(--brand-color);
   background: rgba(15, 23, 42, 0.8);
   box-shadow: 0 10px 30px -10px var(--brand-color);
+  animation-play-state: paused; /* Hover pe flash ruk jayega */
 }
 
 .social-orb:hover .orb-icon {
-  color: #ffffff;
+  color: var(--brand-color);
   filter: drop-shadow(0 0 10px var(--brand-color));
+  animation-play-state: paused;
 }
 
-.collab-text {
-  color: #94a3b8;
-  font-size: 1.1rem;
-  font-weight: 400;
-  max-width: 500px;
-  margin: 0 auto 40px auto;
-  line-height: 1.5;
-  /* border-left: 2px solid #2dd4bf;  */
-  padding-left: 15px;
-}
-
-/* Responsive fix */
+/* --- RESPONSIVE FIX --- */
 @media (max-width: 768px) {
   .section-title-large { font-size: 2.8rem; }
   .social-orb { width: 60px; height: 60px; }
   .orb-icon { font-size: 1.5rem; }
+  
+  .icon-constellation {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 300px;
+    margin: 20px auto 0;
+  }
 }

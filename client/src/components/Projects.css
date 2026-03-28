@@ -1,78 +1,119 @@
 /* --- Sections and Grid --- */
 .minimal-projects {
-  padding: 80px 10%;
+  width: 100%;
+  max-width: 1250px; /* Layout ko bahut zyada phailne se rokega */
+  margin: 0 auto;    /* Poore section ko screen ke center mein rakhega */
+  padding: 60px 25px; /* Side padding taaki cards edge se na chipke */
+  box-sizing: border-box;
 }
 
 .section-title-clean {
-  font-size: 2.5rem;
+  font-size: clamp(2.2rem, 8vw, 3.5rem); 
   font-weight: 800;
   color: #fff;
   margin-bottom: 50px;
+  background: linear-gradient(90deg, #fff, #2dd4bf, #fff);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 4s linear infinite;
+  
+  /* Title alignment */
+  display: block;
+  text-align: left; /* Section ke andar left align, par section khud center hai */
+}
+
+@keyframes shine {
+  to { background-position: 200% center; }
 }
 
 .compact-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 25px;
+  /* Desktop par 3 column, tablet par 2, mobile par 1 */
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+  gap: 30px;
+  width: 100%;
+  margin-top: 2rem;
 }
 
-/* --- Project Cards (Grid View) --- */
 .compact-card {
-  background: rgba(10, 15, 30, 0.7); 
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: rgba(15, 23, 42, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 24px;
-  padding: 30px;
+  border-radius: 20px;
+  padding: 25px;
   cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.3s ease;
   position: relative;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .compact-card:hover {
-  background: rgba(15, 23, 42, 0.8);
+  transform: translateY(-8px);
+  background: rgba(30, 41, 59, 0.8);
   border-color: #2dd4bf;
-  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
-.card-top {
+/* Category Tag Position (Top Right) */
+.card-tag-wrapper {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 20px;
-}
-
-.project-icon-box {
-  background: rgba(255, 255, 255, 0.03);
-  padding: 10px;
-  border-radius: 12px;
-  font-size: 2.2rem;
-  color: #2dd4bf;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
+  margin-bottom: -5px;
 }
 
 .project-category-small {
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
   color: rgba(255, 255, 255, 0.4);
   font-weight: 700;
 }
 
+/* Row Alignment: Icon + Title */
+.project-header-row {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.project-custom-icon {
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  background: rgba(45, 212, 191, 0.1);
+  border: 1px solid rgba(45, 212, 191, 0.2);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2dd4bf;
+  font-size: 1.3rem;
+  transition: all 0.3s ease;
+}
+
+.compact-card:hover .project-custom-icon {
+  background: #2dd4bf;
+  color: #020617;
+  box-shadow: 0 0 15px rgba(45, 212, 191, 0.4);
+}
+
 .project-name-clean {
+  font-family: inherit;
   color: #ffffff;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   font-weight: 800;
-  margin-bottom: 12px;
+  margin: 0;
 }
 
 .project-brief {
   color: #94a3b8; 
   font-size: 0.95rem;
   line-height: 1.6;
+  margin-bottom: 25px;
+  flex-grow: 1; /* Saare cards ke button bottom mein align rahenge */
 }
 
 .view-details-btn {
@@ -86,27 +127,27 @@
   gap: 8px;
   padding: 0;
   cursor: pointer;
-  margin-top: 15px;
+  margin-top: auto;
 }
 
-/* --- Modal Overlay (The Fixed Part) --- */
+/* --- Modal Overlay --- */
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(2, 6, 23, 0.96); /* Darker backdrop */
+  background: rgba(2, 6, 23, 0.96);
   backdrop-filter: blur(12px);
-  z-index: 9999; /* Ensure this is higher than your navbar's z-index */
+  z-index: 9999;
   display: flex;
-  align-items: flex-start; /* Start from top to prevent navbar overlap */
+  align-items: flex-start; 
   justify-content: center;
-  padding: 100px 20px 40px 20px; /* 100px top padding keeps it below navbar */
-  overflow-y: auto; /* Allow full page scroll for big images */
+  padding: 100px 20px 40px 20px;
+  overflow-y: auto;
 }
 
 .modal-content {
   background: #020617; 
   width: 100%;
-  max-width: 900px;
+  max-width: 850px;
   border-radius: 28px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   position: relative;
@@ -120,7 +161,6 @@
   to { transform: scale(1); opacity: 1; }
 }
 
-/* --- Close Button --- */
 .close-modal {
   position: absolute;
   top: 20px;
@@ -132,56 +172,41 @@
   height: 40px;
   border-radius: 50%;
   cursor: pointer;
-  z-index: 10001; /* Higher than image */
+  z-index: 10;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: 0.3s;
 }
 
-.close-modal:hover {
-  background: #ef4444; /* Red on hover for clarity */
-  transform: rotate(90deg);
-}
+.close-modal:hover { background: #ef4444; transform: rotate(90deg); }
 
-/* --- Image and Content Alignment --- */
-.modal-body-vertical {
-  display: flex;
-  flex-direction: column;
-}
+.modal-body-vertical { display: flex; flex-direction: column; }
 
 .modal-image-full {
   width: 100%;
-  background: #f8fafc; /* Professional contrast */
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background: #0f172a;
   border-bottom: 2px solid rgba(45, 212, 191, 0.2);
 }
 
 .modal-image-full img {
   width: 100%;
   height: auto;
-  max-height: 500px;
-  object-fit: contain;
+  max-height: 450px;
+  object-fit: cover;
   display: block;
 }
 
-.modal-content-centered {
-  padding: 40px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
+.modal-content-centered { padding: 40px; text-align: center; }
 
-.modal-tag { color: #2dd4bf; font-weight: 700; font-size: 0.8rem; letter-spacing: 2px; }
+.modal-tag { color: #2dd4bf; font-weight: 700; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; }
 .modal-title { font-size: 2.2rem; margin: 15px 0; color: #fff; font-weight: 800; }
 
 .modal-tech-row {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  flex-wrap: wrap;
+  gap: 15px;
   font-size: 1.8rem;
   color: #2dd4bf;
   margin-bottom: 25px;
@@ -192,16 +217,14 @@
   line-height: 1.8;
   font-size: 1.05rem;
   text-align: justify;
-  text-justify: inter-word;
   max-width: 750px;
-  margin-bottom: 35px;
+  margin: 0 auto 35px auto;
 }
 
 .modal-actions-centered {
   display: flex;
   justify-content: center;
-  gap: 20px;
-  width: 100%;
+  gap: 15px;
 }
 
 .modal-btn {
@@ -213,20 +236,31 @@
   align-items: center;
   gap: 10px;
   transition: 0.3s;
+  font-size: 0.95rem;
 }
 
 .modal-btn.git { background: rgba(255,255,255,0.05); color: #fff; border: 1px solid rgba(255,255,255,0.1); }
 .modal-btn.live { background: #2dd4bf; color: #020617; }
 
-.modal-btn:hover { transform: translateY(-3px); }
-
-/* --- Responsive --- */
-@media (max-width: 768px) {
-  .modal-overlay { padding-top: 80px; }
-  .modal-title { font-size: 1.6rem; }
-  .modal-actions-centered { flex-direction: column; }
+/* --- RESPONSIVE FIXES --- */
+@media (max-width: 1024px) {
+  .compact-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
-/* Scrollbar Fix */
-.modal-content::-webkit-scrollbar { width: 5px; }
-.modal-content::-webkit-scrollbar-thumb { background: rgba(45, 212, 191, 0.2); border-radius: 10px; }
+@media (max-width: 768px) {
+  .minimal-projects { padding: 40px 20px; }
+  .section-title-clean { 
+    margin-bottom: 30px;
+    font-size: 2.2rem;
+    text-align: center; /* Mobile par centered title better lagta hai */
+  }
+  .compact-grid { grid-template-columns: 1fr; gap: 25px; }
+  .modal-overlay { padding-top: 60px; }
+  .modal-content { border-radius: 0; min-height: 100vh; }
+  .modal-title { font-size: 1.8rem; }
+  .modal-content-centered { padding: 30px 20px; }
+  .modal-actions-centered { flex-direction: column; width: 100%; }
+  .modal-btn { justify-content: center; width: 100%; }
+  .project-header-row { gap: 10px; }
+  .project-name-clean { font-size: 1.35rem; }
+}

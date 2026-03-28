@@ -1,73 +1,141 @@
+/* --- SKILLS SECTION CONTAINER --- */
 .skills-section {
-  padding: 80px 8%;
-  min-height: 85vh;
+  padding: 80px 10%;
+  min-height: 100vh;
   display: flex;
+  align-items: center;
+  justify-content: center; /* Section level centering */
+  position: relative;
+  background: transparent;
+  box-sizing: border-box;
+}
+
+/* --- THE MAIN GRID --- */
+.skills-container {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr; 
+  gap: 50px;
+  width: 100%;
+  max-width: 1200px; /* Layout ko control karne ke liye */
   align-items: center;
 }
 
-.skills-container {
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 50px;
-  width: 100%;
-}
-
+/* --- SKILLS TITLE (Left Side) --- */
 .skills-title {
-  font-size: 3rem;
-  color: #fff;
+  font-size: clamp(2.2rem, 6vw, 3.5rem); /* Mobile ke liye min size optimize kiya */
   font-weight: 800;
-  margin-bottom: 30px;
+  color: #fff;
+  margin-bottom: 40px;
+  background: linear-gradient(90deg, #fff, #2dd4bf, #fff);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 4s linear infinite;
+  
+  /* Alignment Fix */
+  display: block; 
+  width: fit-content;
+  text-align: left;
 }
 
-/* Slightly Darker Cards for Consistency */
+@keyframes shine {
+  to { background-position: 200% center; }
+}
+
+/* --- TECH GRID & CARDS --- */
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 15px;
+  margin-bottom: 30px; 
+}
+
 .tech-glass-card {
-  background: rgba(4, 12, 30, 0.6); /* Adjusted to match your dark theme */
+  background: rgba(4, 12, 30, 0.6);
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 12px 18px;
   border-radius: 10px;
   display: flex;
   align-items: center;
-  gap: 12px;
-  transition: 0.3s ease;
+  gap: 10px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
 }
 
-.tech-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 15px;
-  margin-bottom: 30px; /* Space before exploring badge */
+.tech-glass-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.3), 
+    rgba(45, 212, 191, 0.2), 
+    transparent
+  );
+  transform: skewX(-20deg);
+  transition: 0.6s;
+}
+
+.tech-glass-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(45, 212, 191, 0.5);
+  background: rgba(4, 12, 30, 0.8);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.tech-glass-card:hover::after {
+  left: 150%;
 }
 
 .tech-icon { font-size: 1.6rem; display: flex; }
 .tech-name { color: #fff; font-weight: 600; font-size: 0.95rem; }
 
-/* Exploring Badge at Bottom */
+/* --- 1. EXPLORING BADGE --- */
 .exploring-badge-bottom {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background: rgba(45, 212, 191, 0.05);
-  color: #2dd4bf;
+  background: rgba(4, 12, 30, 0.6); 
+  backdrop-filter: blur(12px);
+  color: rgba(255, 255, 255, 0.9); 
   padding: 10px 20px;
   border-radius: 6px;
-  border: 1px solid rgba(45, 212, 191, 0.2);
-  font-size: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1); 
+  font-size: 0.95rem;
+  margin-top: 10px;
 }
 
 .static-dot {
-  width: 8px; height: 8px; background: #2dd4bf; border-radius: 50%;
+  width: 8px; height: 8px; 
+  background: #2dd4bf; 
+  border-radius: 50%;
+  box-shadow: 0 0 8px #2dd4bf;
+  animation: pulse 2s infinite;
 }
 
-/* Terminal Glass Styling */
+@keyframes pulse {
+  0% { transform: scale(0.9); opacity: 0.8; }
+  50% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(0.9); opacity: 0.8; }
+}
+
+/* --- TERMINAL WINDOW --- */
 .terminal-glass {
-  background: rgba(2, 8, 20, 0.7); /* Consistent dark shade */
+  background: rgba(2, 8, 20, 0.7);
   backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 12px;
-  height: 280px;
+  height: 300px;
   overflow: hidden;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
 }
 
 .terminal-header {
@@ -88,13 +156,50 @@
   color: #2dd4bf;
 }
 
-.cmd span { color: #fff; margin-right: 10px; }
+.cmd span { color: #fff; margin-right: 10px; opacity: 0.6; }
 .typing-text { color: #888; margin-top: 15px; font-size: 0.9rem; line-height: 1.6; }
 .cursor { animation: blink 1s infinite; }
 
 @keyframes blink { 50% { opacity: 0; } }
 
+/* --- RESPONSIVE MEDIA QUERIES --- */
+@media (max-width: 1024px) {
+  .skills-section { padding: 80px 5%; }
+}
+
 @media (max-width: 968px) {
-  .skills-container { grid-template-columns: 1fr; }
-  .skills-right { display: none; }
+  .skills-container { 
+    grid-template-columns: 1fr; 
+    gap: 40px; 
+    text-align: center; /* Center content in the column */
+  }
+  
+  .skills-title {
+    margin: 0 auto 30px auto; /* Center heading horizontally */
+    text-align: center;
+  }
+
+  .tech-grid {
+    justify-content: center; /* Center cards */
+  }
+
+  .skills-container .skills-right { 
+    display: block !important; 
+    margin: 0 auto; 
+    width: 100%; 
+    max-width: 500px;
+  }
+
+  .exploring-badge-bottom {
+    margin: 20px auto 0 auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .tech-grid { 
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 12px;
+  }
+  .terminal-glass { height: 260px; }
+  .skills-title { font-size: 2rem; }
 }

@@ -1,42 +1,55 @@
+/* --- HERO SECTION --- */
 .hero {
   min-height: 100vh;
   width: 100%;
   display: flex;
-  align-items: flex-start; /* 'left' ki jagah standard flex property */
-  justify-content: center; /* Vertically center content */
+  align-items: flex-start; /* Desktop par strictly Left Aligned */
+  justify-content: center; 
   flex-direction: column;
-  padding-left: 10%; /* Tera original padding */
+  padding-left: 10%; 
   padding-top: 80px;
+  box-sizing: border-box;
 }
 
 .hero-content {
-  text-align: left; /* Strict left alignment as per your original */
+  text-align: left;
   max-width: 800px;
+  width: 100%;
 }
 
-/* Greeting uda diya as requested */
-
+/* --- 1. NAME LINE --- */
 .name-line {
   font-size: clamp(2.5rem, 9vw, 5.5rem);
   font-weight: 800;
-  color: var(--color-main);
-  margin: 0; 
+  margin: 0;
   letter-spacing: -2px;
-  line-height: 1;
-}
-
-.name-accent {
-  background: linear-gradient(to right, #ffffff, #60a5fa);
+  line-height: 1.1;
+  
+  background: linear-gradient(to right, #ffffff 0%, #60a5fa 25%, var(--color-accent) 50%, #60a5fa 75%, #ffffff 100%);
+  background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 0 20px rgba(96, 165, 250, 0.2));
+  
+  animation: continuousShine 4s linear infinite; 
+  transition: all 0.3s ease;
+  display: block; /* Center align ke liye block zaruri hai */
 }
 
+.name-line:hover {
+  filter: drop-shadow(0 0 15px rgba(45, 212, 191, 0.5));
+  transform: scale(1.01);
+}
+
+@keyframes continuousShine {
+  to { background-position: 200% center; }
+}
+
+/* --- 2. SOFTWARE ENGINEER --- */
 .hero-subtitle {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-top: 8px; /* Gap tight kar diya name ke niche */
+  margin-top: 15px;
   font-size: clamp(1.1rem, 2vw, 1.5rem);
   font-weight: 600;
   color: var(--color-accent);
@@ -50,8 +63,9 @@
   box-shadow: 0 0 10px var(--color-accent);
 }
 
+/* --- 3. DESCRIPTION & BUTTONS --- */
 .hero-description {
-  margin: 20px 0 30px 0;
+  margin: 20px 0 35px 0;
   max-width: 550px;
   font-size: 1.15rem;
   color: rgba(255, 255, 255, 0.7);
@@ -63,15 +77,13 @@
   gap: 1.2rem;
 }
 
-/* Common sizing for both buttons to make them look identical in shape */
 .btn-main, .btn-outline {
   padding: 0.8rem 2.2rem;
   border-radius: 8px;
   font-weight: 700;
   text-decoration: none;
   transition: 0.3s;
-  display: inline-block;
-  min-width: 160px; /* Synchronized width */
+  min-width: 165px;
   text-align: center;
 }
 
@@ -79,22 +91,73 @@
   background: #ffffff;
   color: #042d7a;
   border: 2px solid #ffffff;
-  box-shadow: 0 10px 30px rgba(22, 99, 229, 0.4);
-}
-
-.btn-main:hover {
-  transform: translateY(-3px);
-  background: #f0f7ff;
 }
 
 .btn-outline {
   background: transparent;
-  border: 2px solid rgba(255, 255, 255, 0.4); /* Synced border thickness */
-  color: var(--color-main);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  color: #ffffff;
 }
 
 .btn-outline:hover {
-  transform: translateY(-3px);
-  background: rgba(255, 255, 255, 0.1);
-  border-color: #ffffff;
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+/* --- 4. RESPONSIVE --- */
+@media (max-width: 1024px) {
+  .hero { 
+    padding-left: 5%; 
+    min-height: auto; 
+    padding-top: 120px; 
+    padding-bottom: 80px; 
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding-left: 0;
+    padding-right: 0;
+    align-items: center; /* Poore container ko center karega */
+  }
+
+  .hero-content {
+    text-align: center; /* Text alignment center */
+    padding: 0 25px;
+  }
+
+  .hero-subtitle {
+    justify-content: center; /* "Software Engineer" badge center */
+  }
+
+  .hero-description {
+    margin: 20px auto 35px auto; /* Description box center */
+  }
+
+  .hero-btns {
+    justify-content: center; /* Buttons container center */
+  }
+}
+
+@media (max-width: 600px) {
+  .hero { 
+    padding: 100px 20px 60px 20px; 
+  }
+  
+  .hero-btns { 
+    flex-direction: column; 
+    width: 100%; 
+    max-width: 300px; /* Buttons zyada wide na ho mobile par */
+    margin: 0 auto;
+  }
+  
+  .btn-main, .btn-outline { 
+    width: 100%; 
+    min-width: unset;
+  }
+  
+  .name-line { 
+    font-size: 2.8rem; 
+    letter-spacing: -1px;
+  }
 }

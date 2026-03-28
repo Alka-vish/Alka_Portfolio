@@ -1,101 +1,246 @@
+/* --- ABOUT SECTION CONTAINER --- */
 .about-section {
   padding: 100px 10% 50px 10%;
   min-height: 100vh;
+  width: 100%;
   display: flex;
   align-items: center;
+  position: relative;
+  overflow: hidden;
 }
 
+/* --- THE MAIN GRID --- */
 .about-container {
   display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  gap: 30px;
+  grid-template-columns: 0.9fr 1.1fr; 
+  gap: 40px; 
   width: 100%;
+  align-items: flex-start;
 }
 
-.glass-card {
-  background: rgba(2, 12, 38, 0.5);
-  backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 20px;
-  padding: 25px;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-}
-
-.about-left {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-}
-
-/* About Paragraph */
-.justified-text {
-  color: rgba(255, 255, 255, 0.8);
-  line-height: 1.6;
-  font-size: 1.05rem;
-  text-align: justify;
-}
-
-/* Professional White Bold */
-.justified-text strong {
-  color: #ffffff;
-  font-weight: 600;
-}
-
-.card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
-.card-header h3 { color: #fff; font-size: 1.5rem; margin: 0; }
 
 .column-label {
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   text-transform: uppercase;
-  color: #60a5fa;
-  letter-spacing: 1px;
+  color: white;
+  font-weight:bold;
+  letter-spacing: 1.5px;
   margin-bottom: 20px;
 }
 
-/* Roles & Education Items */
-.role-item, .edu-title { display: flex; align-items: center; gap: 15px; margin-bottom: 10px; }
-.role-item h5, .edu-title h5 { color: #fff; margin: 0; font-size: 1.05rem; }
+/* --- GLASS CARD EFFECT --- */
+.glass-card {
+  background: rgba(2, 12, 38, 0.5);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 30px; 
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+  position: relative;
+  overflow: hidden; 
+  height: fit-content; 
+  will-change: transform;
+}
+
+.glass-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(45, 212, 191, 0.3);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* --- BRIGHTER FLASH SHINE EFFECT --- */
+.glass-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 60%; /* Slightly wider for better visibility */
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.2), /* Increased opacity */
+    rgba(45, 212, 191, 0.4), /* Stronger Teal Flash */
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transform: skewX(-25deg);
+  pointer-events: none;
+}
+
+.glass-card:hover::after {
+  left: 150%;
+  transition: all 0.7s ease-in-out; /* Smooth but visible */
+}
+
+/* --- ABOUT DESCRIPTION (Left Column) --- */
+.about-left {
+  display: flex;
+  flex-direction: column;
+  gap: 30px; 
+  height: fit-content;
+}
+
+
+/* --- TEXT REVEAL ANIMATION --- */
+.about-left h3, .justified-text {
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.about-left h3 {
+  color: #fff;
+  font-size: clamp(1.4rem, 4vw, 1.8rem);
+  margin: 0 0 10px 0;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.justified-text {
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.7; /* Better readability */
+  font-size: 1.05rem;
+  text-align: justify;
+  margin: 10px 0 0 0;
+  display: block;
+}
+
+.justified-text strong {
+  color: #ffffff;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.glass-card:hover .justified-text strong {
+  color: #2dd4bf;
+  text-shadow: 0 0 10px rgba(45, 212, 191, 0.3);
+}
+
+/* --- ROLES HOVER HIGHLIGHT --- */
+.roles-card:hover h5 {
+  color: #2dd4bf !important;
+  transition: 0.3s ease;
+}
+
+.roles-card:hover .accent-icon {
+  transform: scale(1.1);
+  transition: 0.3s ease;
+}
+
+/* --- EDUCATION SECTION (Right Column) --- */
+.card-header { 
+  display: flex; 
+  align-items: center; 
+  gap: 12px; 
+  margin-bottom: 25px; 
+}
+
+.card-header h3 { 
+  color: #fff; 
+  font-size: clamp(1.2rem, 3vw, 1.5rem); 
+  margin: 0; 
+}
+
+.edu-item-isolated {
+  position: relative;
+  display: block;
+  margin-bottom: 25px; 
+  width: 100%;
+}
+
+/* --- ICON ALIGNMENT FIX --- */
+.edu-title, .role-item { 
+  display: flex; 
+  align-items: flex-start; /* Fixes icon staying at top of text */
+  gap: 15px; 
+  margin-bottom: 12px; 
+}
+
+.edu-title svg, .role-item svg {
+  flex-shrink: 0; /* Prevents icon from squishing */
+  margin-top: 5px; /* Aligns with the first line of text */
+}
+
+.accent-icon{
+  margin-bottom: 20px;
+}
+.edu-title h5 { color: #fff; margin: 0; font-size: 1.1rem; }
+
+.label-isolated {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: #60a5fa;
+  letter-spacing: 1.5px;
+  margin-right: 15px;
+}
 
 .college-name {
   font-size: 0.95rem;
   color: rgba(255, 255, 255, 0.5);
-  margin: 0 0 8px 40px; /* Aligns under text, not icon */
+  margin: 0 0 10px 47px; 
 }
 
-/* Clean Horizontal Layout for Marks & Date */
 .edu-meta {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-left: 40px;
+  margin-left: 47px;
+  flex-wrap: wrap; 
+  gap: 10px;
 }
 
 .badge {
   background: rgba(45, 212, 191, 0.1);
   color: #2dd4bf;
-  padding: 4px 10px;
+  padding: 5px 12px;
   border-radius: 6px;
   font-size: 0.8rem;
   font-weight: 700;
   border: 1px solid rgba(45, 212, 191, 0.2);
+  transition: 0.3s;
 }
 
+.glass-card:hover .badge {
+  background: #2dd4bf;
+  color: #020c26;
+  transform: scale(1.05);
+}
+
+
+
 .date-text { color: #94a3b8; font-size: 0.85rem; font-weight: 600; }
+.divider { height: 1px; background: rgba(255, 255, 255, 0.06); margin: 20px 0; }
 
-.divider { height: 1px; background: rgba(255, 255, 255, 0.05); margin: 15px 0; }
-
-/* Icons */
 .accent-icon { color: #2dd4bf; font-size: 1.8rem; }
 .blue-icon { color: #60a5fa; font-size: 1.3rem; }
-.gold-icon { color: #fbbf24; font-size: 1.3rem; }
-.white-icon { color: #fff; opacity: 0.8; font-size: 1.4rem; }
-.mini-icon { 
-  width: 32px; height: 32px; background: rgba(255,255,255,0.1); 
-  border-radius: 6px; display: flex; align-items: center; 
-  justify-content: center; font-size: 0.65rem; font-weight: 800; color: #fff;
+
+/* --- RESPONSIVE MEDIA QUERIES --- */
+@media (max-width: 1100px) {
+  .about-container { gap: 30px; } 
+  .about-section { padding-left: 5%; padding-right: 5%; }
 }
 
 @media (max-width: 968px) {
-  .about-container { grid-template-columns: 1fr; }
-  .about-section { padding-top: 120px; }
+  .about-container { grid-template-columns: 1fr; gap: 30px; }
+  .about-left .glass-card { width: 100% !important; }
+}
+
+@media (max-width: 600px) {
+  .about-section { padding: 80px 20px; }
+  .glass-card { padding: 20px; }
+  .college-name, .edu-meta { margin-left: 0; padding-left: 0px; }
+  .edu-meta { justify-content: flex-start; gap: 15px; }
+  .justified-text { text-align: left; }
 }

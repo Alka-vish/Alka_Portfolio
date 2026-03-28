@@ -16,7 +16,7 @@ const About = () => {
           <div className="glass-card about-card">
             <div className="card-header">
               <FaUserAstronaut className="accent-icon" />
-              <h3>About Me</h3>
+              <h2 className="column-label">About Me</h2>
             </div>
             <p className="justified-text">
               I am a <strong>3rd-year AI & Data Science student</strong> at <strong>VESIT, Mumbai</strong>. 
@@ -29,7 +29,7 @@ const About = () => {
           </div>
 
           <div className="glass-card roles-card">
-            <h4 className="column-label">Current Roles</h4>
+            <h2 className="column-label">Current Roles</h2>
             <div className="role-item">
               <FaUserTie className="blue-icon" />
               <div>
@@ -50,7 +50,7 @@ const About = () => {
         {/* Right Column: Education */}
         <div className="about-right">
           <div className="glass-card edu-card">
-            <h4 className="column-label">Academic Background</h4>
+            <h2 className="column-label">Academic Background</h2>
 
             {/* B.Tech */}
             <div className="edu-item">
