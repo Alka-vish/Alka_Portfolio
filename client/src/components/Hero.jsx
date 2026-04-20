@@ -25,6 +25,15 @@ const Hero = () => {
           <a href="#contact" className="btn-outline">Let's Talk</a>
         </div>
       </div>
+
+      {/* Image Section Added Below */}
+      <div className="hero-image-wrapper">
+  <img 
+    src="/Alka_portfolio-1.png" 
+    alt="Alka Vishwakarma" 
+    className="hero-pic" 
+  />
+</div>
     </section>
   );
 };

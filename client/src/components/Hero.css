@@ -1,163 +1,190 @@
 /* --- HERO SECTION --- */
 .hero {
-  min-height: 100vh;
-  width: 100%;
-  display: flex;
-  align-items: flex-start; /* Desktop par strictly Left Aligned */
-  justify-content: center; 
-  flex-direction: column;
-  padding-left: 10%; 
-  padding-top: 80px;
-  box-sizing: border-box;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    padding-left: 10%;
+    /* Use a safer top padding that accounts for Navbar height */
+    padding-top: 100px; 
+    padding-bottom: 50px;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
 }
 
 .hero-content {
-  text-align: left;
-  max-width: 800px;
-  width: 100%;
+    text-align: left;
+    max-width: 550px; 
+    width: 100%;
+    z-index: 5;
 }
 
 /* --- 1. NAME LINE --- */
 .name-line {
-  font-size: clamp(2.5rem, 9vw, 5.5rem);
-  font-weight: 800;
-  margin: 0;
-  letter-spacing: -2px;
-  line-height: 1.1;
-  
-  background: linear-gradient(to right, #ffffff 0%, #60a5fa 25%, var(--color-accent) 50%, #60a5fa 75%, #ffffff 100%);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  
-  animation: continuousShine 4s linear infinite; 
-  transition: all 0.3s ease;
-  display: block; /* Center align ke liye block zaruri hai */
+    font-size: clamp(2.5rem, 9vw, 5.5rem);
+    font-weight: 800;
+    margin: 0;
+    letter-spacing: -2px;
+    line-height: 1.1;
+    background: linear-gradient(to right, #ffffff 0%, #60a5fa 25%, var(--color-accent) 50%, #60a5fa 75%, #ffffff 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: continuousShine 4s linear infinite;
+    transition: all 0.3s ease;
+    display: block;
 }
 
 .name-line:hover {
-  filter: drop-shadow(0 0 15px rgba(45, 212, 191, 0.5));
-  transform: scale(1.01);
+    filter: drop-shadow(0 0 15px rgba(45, 212, 191, 0.5));
+    transform: scale(1.01);
 }
 
 @keyframes continuousShine {
-  to { background-position: 200% center; }
+    to { background-position: 200% center; }
 }
 
 /* --- 2. SOFTWARE ENGINEER --- */
 .hero-subtitle {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-top: 15px;
-  font-size: clamp(1.1rem, 2vw, 1.5rem);
-  font-weight: 600;
-  color: var(--color-accent);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 15px;
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    font-weight: 600;
+    color: var(--color-accent);
 }
 
 .badge-dot {
-  width: 10px;
-  height: 10px;
-  background: var(--color-accent);
-  border-radius: 50%;
-  box-shadow: 0 0 10px var(--color-accent);
+    width: 10px;
+    height: 10px;
+    background: var(--color-accent);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--color-accent);
 }
 
 /* --- 3. DESCRIPTION & BUTTONS --- */
 .hero-description {
-  margin: 20px 0 35px 0;
-  max-width: 550px;
-  font-size: 1.15rem;
-  color: rgba(255, 255, 255, 0.7);
-  line-height: 1.6;
+    margin: 20px 0 35px 0;
+    max-width: 500px;
+    font-size: 1.15rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
 }
 
 .hero-btns {
-  display: flex;
-  gap: 1.2rem;
+    display: flex;
+    gap: 1.2rem;
 }
 
 .btn-main, .btn-outline {
-  padding: 0.8rem 2.2rem;
-  border-radius: 8px;
-  font-weight: 700;
-  text-decoration: none;
-  transition: 0.3s;
-  min-width: 165px;
-  text-align: center;
+    padding: 0.8rem 2.2rem;
+    border-radius: 8px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: 0.3s;
+    min-width: 165px;
+    text-align: center;
 }
 
-.btn-main {
-  background: #ffffff;
-  color: #042d7a;
-  border: 2px solid #ffffff;
+.btn-main { background: #ffffff; color: #042d7a; border: 2px solid #ffffff; }
+.btn-outline { background: transparent; border: 2px solid rgba(255, 255, 255, 0.4); color: #ffffff; }
+.btn-outline:hover { border-color: var(--color-accent); color: var(--color-accent); }
+
+/* --- 4. IMAGE SECTION (STAYS ON RIGHT ON DESKTOP) --- */
+.hero-image-wrapper {
+    position: absolute;
+    right: 10%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 480px;
+    max-width: 42vw;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.btn-outline {
-  background: transparent;
-  border: 2px solid rgba(255, 255, 255, 0.4);
-  color: #ffffff;
+.hero-pic {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    filter: drop-shadow(0 15px 40px rgba(0,0,0,0.6));
+    mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
 }
 
-.btn-outline:hover {
-  border-color: var(--color-accent);
-  color: var(--color-accent);
+/* --- 5. RESPONSIVE FIXES --- */
+
+/* For medium screens (Small Laptops) */
+@media (max-width: 1100px) {
+    .hero-image-wrapper {
+        width: 380px;
+    }
 }
 
-/* --- 4. RESPONSIVE --- */
-@media (max-width: 1024px) {
-  .hero { 
-    padding-left: 5%; 
-    min-height: auto; 
-    padding-top: 120px; 
-    padding-bottom: 80px; 
-  }
+/* FOR MOBILE & TABLETS: Preventing Navbar overlap */
+@media (max-width: 900px) {
+    .hero {
+        padding: 120px 20px 60px 20px; /* More top padding to clear navbar */
+        align-items: center;
+        min-height: 100vh; /* Changed back to vh to keep the full look */
+        height: auto;
+        justify-content: flex-start; /* Ensure text starts at top */
+    }
+
+    .hero-content {
+        text-align: center;
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .hero-subtitle, .hero-btns {
+        justify-content: center;
+    }
+
+    .hero-description {
+        margin: 20px auto 35px auto;
+    }
+
+    .hero-image-wrapper {
+        position: relative; /* Image moves below the buttons */
+        transform: none;
+        top: 0;
+        right: 0;
+        width: 280px;
+        max-width: 80%;
+        margin: 0 auto;
+    }
 }
 
-@media (max-width: 768px) {
-  .hero {
-    padding-left: 0;
-    padding-right: 0;
-    align-items: center; /* Poore container ko center karega */
-  }
-
-  .hero-content {
-    text-align: center; /* Text alignment center */
-    padding: 0 25px;
-  }
-
-  .hero-subtitle {
-    justify-content: center; /* "Software Engineer" badge center */
-  }
-
-  .hero-description {
-    margin: 20px auto 35px auto; /* Description box center */
-  }
-
-  .hero-btns {
-    justify-content: center; /* Buttons container center */
-  }
-}
-
+/* For very small/short phones */
 @media (max-width: 600px) {
-  .hero { 
-    padding: 100px 20px 60px 20px; 
-  }
-  
-  .hero-btns { 
-    flex-direction: column; 
-    width: 100%; 
-    max-width: 300px; /* Buttons zyada wide na ho mobile par */
-    margin: 0 auto;
-  }
-  
-  .btn-main, .btn-outline { 
-    width: 100%; 
-    min-width: unset;
-  }
-  
-  .name-line { 
-    font-size: 2.8rem; 
-    letter-spacing: -1px;
-  }
+    .hero {
+        padding-top: 100px; /* Slightly less on very small phones */
+    }
+    
+    .name-line {
+        font-size: 2.8rem;
+    }
+
+    .hero-btns {
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+    }
+
+    .btn-main, .btn-outline {
+        width: 100%;
+        max-width: 280px;
+        min-width: unset;
+    }
+
+    .hero-image-wrapper {
+        width: 220px;
+    }
 }
