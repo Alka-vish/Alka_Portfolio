@@ -29,7 +29,7 @@ const Hero = () => {
       {/* Image Section Added Below */}
       <div className="hero-image-wrapper">
   <img 
-    src="ChatGPT Image Apr 25, 2026, 11_15_29 AM.png" 
+    src="pic hero section.png" 
     alt="Alka Vishwakarma" 
     className="hero-pic" 
   />

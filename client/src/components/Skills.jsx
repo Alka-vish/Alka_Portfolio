@@ -8,9 +8,9 @@ const Skills = () => {
  const fullText = 
   "git init --lang: Java, Python, JS\n" +
   "git add . --skills: MERN, ML, NumPy\n" +
-  "git commit -m 'Web Dev & Data Science'\n" +
-  "git push --status: 200+ DSA [SUCCESS]\n" +
-  "npm run dev --projects: GDP Analyzer..";
+  "git commit 'Web Dev & Data Science'\n" +
+  "git push -status: 200+ DSA [SUCCESS]\n" +
+  "npm run dev -projects: GDP Analyzer..";
   useEffect(() => {
     let i = 0;
     const interval = setInterval(() => {

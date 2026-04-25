@@ -73,7 +73,7 @@ const Projects = () => {
       shortDesc: "My personal website built with React and Custom CSS.",
       fullDesc:
         "A personal portfolio to showcase my projects, technical skills, and academic background. It features a clean project gallery with interactive modals and a fully responsive layout for all devices. I focused on writing clean CSS and using React for building a fast and simple user interface.",
-      img: "/portfolio.png",
+      img: "/Portfolio.png",
       tech: [<SiReact />, <SiTailwindcss />, <SiNodedotjs />, <SiExpress />],
     },
     {
