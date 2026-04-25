@@ -7,12 +7,12 @@
     justify-content: center;
     flex-direction: column;
     padding-left: 10%;
-    /* Use a safer top padding that accounts for Navbar height */
     padding-top: 100px; 
     padding-bottom: 50px;
     box-sizing: border-box;
     position: relative;
     overflow: hidden;
+    background: #020617; /* Matches your core theme */
 }
 
 .hero-content {
@@ -97,15 +97,16 @@
 /* --- 4. IMAGE SECTION (STAYS ON RIGHT ON DESKTOP) --- */
 .hero-image-wrapper {
     position: absolute;
-    right: 10%;
+    right: 5%; /* Brought closer to center for better balance */
     top: 50%;
     transform: translateY(-50%);
-    width: 480px;
-    max-width: 42vw;
+    width: 600px; /* Bigger size for the detailed AI graphic */
+    max-width: 48vw;
     z-index: 1;
     display: flex;
     justify-content: center;
     align-items: center;
+    background: transparent;
 }
 
 .hero-pic {
@@ -113,28 +114,42 @@
     height: auto;
     object-fit: contain;
     display: block;
-    filter: drop-shadow(0 15px 40px rgba(0,0,0,0.6));
-    mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+    background: transparent;
+    
+    /* 1. Subtle drop shadow to lift the subject */
+    filter: drop-shadow(0 0 30px rgba(96, 165, 250, 0.2));
+
+    /* 2. SYNC FIX: Radial mask dissolves the square edges */
+    mask-image: radial-gradient(
+        circle at center, 
+        black 50%, 
+        rgba(0, 0, 0, 0.6) 80%, 
+        transparent 100%
+    );
+    -webkit-mask-image: radial-gradient(
+        circle at center, 
+        black 50%, 
+        rgba(0, 0, 0, 0.6) 80%, 
+        transparent 100%
+    );
 }
 
 /* --- 5. RESPONSIVE FIXES --- */
 
-/* For medium screens (Small Laptops) */
 @media (max-width: 1100px) {
     .hero-image-wrapper {
-        width: 380px;
+        width: 450px;
+        right: 2%;
     }
 }
 
-/* FOR MOBILE & TABLETS: Preventing Navbar overlap */
 @media (max-width: 900px) {
     .hero {
-        padding: 120px 20px 60px 20px; /* More top padding to clear navbar */
+        padding: 120px 20px 60px 20px;
         align-items: center;
-        min-height: 100vh; /* Changed back to vh to keep the full look */
+        min-height: 100vh;
         height: auto;
-        justify-content: flex-start; /* Ensure text starts at top */
+        justify-content: flex-start;
     }
 
     .hero-content {
@@ -152,20 +167,25 @@
     }
 
     .hero-image-wrapper {
-        position: relative; /* Image moves below the buttons */
+        position: relative;
         transform: none;
         top: 0;
         right: 0;
-        width: 280px;
-        max-width: 80%;
+        width: 320px;
+        max-width: 90%;
         margin: 0 auto;
+    }
+
+    .hero-pic {
+        /* Reduce mask intensity on smaller screens */
+        mask-image: radial-gradient(circle, black 70%, transparent 100%);
+        -webkit-mask-image: radial-gradient(circle, black 70%, transparent 100%);
     }
 }
 
-/* For very small/short phones */
 @media (max-width: 600px) {
     .hero {
-        padding-top: 100px; /* Slightly less on very small phones */
+        padding-top: 100px;
     }
     
     .name-line {
@@ -185,6 +205,6 @@
     }
 
     .hero-image-wrapper {
-        width: 220px;
+        width: 260px;
     }
 }

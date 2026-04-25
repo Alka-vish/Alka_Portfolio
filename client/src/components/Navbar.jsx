@@ -59,7 +59,7 @@ const Navbar = () => {
           
           <li className="nav-resume">
            <a 
-  href="/Alka_Resume.pdf" 
+  href="Alka_resume_TPC_Portfolio.pdf" 
   target="_blank" 
   rel="noopener noreferrer" 
   className="resume-btn"

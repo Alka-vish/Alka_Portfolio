@@ -6,11 +6,11 @@ import './Skills.css';
 const Skills = () => {
   const [text, setText] = useState('');
  const fullText = 
-  "git init --languages: Java, Python, JS\n" +
+  "git init --lang: Java, Python, JS\n" +
   "git add . --skills: MERN, ML, NumPy\n" +
-  "git commit -m 'Web Dev with Data Science'\n" +
+  "git commit -m 'Web Dev & Data Science'\n" +
   "git push --status: 200+ DSA [SUCCESS]\n" +
-  "npm run develop --projects: GDP Analyzer...";
+  "npm run dev --projects: GDP Analyzer..";
   useEffect(() => {
     let i = 0;
     const interval = setInterval(() => {
